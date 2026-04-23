@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Carissa Azelia Zahra</title>
+    <!-- Font Google: Montserrat untuk kesan modern -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-pink: #ff477e; /* Pink Cerah */
+            --primary-yellow: #ffee32; /* Kuning Cerah */
+            --dark-pink: #ff0054;
+            --light-pink: #fff0f3;
+            --text-dark: #2b2d42;
+            --text-light: #8d99ae;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Animasi Scroll --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 71, 126, 0.1);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-pink);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-pink);
+        }
+
+        /* --- Hero Section --- */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--white) 100%);
+            padding: 0 10%;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-pink);
+            background: linear-gradient(to bottom, transparent 60%, var(--primary-yellow) 40%);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--primary-pink);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 71, 126, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--dark-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 71, 126, 0.4);
+        }
+
+        /* --- Section General --- */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 6px;
+            background: var(--primary-yellow);
+            bottom: 5px;
+            left: 15%;
+            z-index: -1;
+            border-radius: 10px;
+        }
+
+        /* --- About Section & Riwayat Sekolah --- */
+        .about-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            position: sticky;
+            top: 100px;
+        }
+
+        .about-img img {
+            width: 300px;
+            height: 300px;
+            border-radius: 30px;
+            object-fit: cover;
+            border: 8px solid var(--primary-yellow);
+            box-shadow: 20px 20px 0px var(--light-pink);
+        }
+
+        .about-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .education-list {
+            margin-top: 30px;
+            border-left: 4px solid var(--primary-yellow);
+            padding-left: 20px;
+        }
+
+        .edu-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .edu-item::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-pink);
+            left: -30px;
+            top: 5px;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+        }
+
+        .edu-item h4 {
+            color: var(--primary-pink);
+            font-size: 1.1rem;
+        }
+
+        .edu-item span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* --- Skills Section --- */
+        #skills {
+            background-color: var(--light-pink);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            border-bottom: 4px solid var(--primary-yellow);
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: var(--primary-pink);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--primary-pink));
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        /* --- Organisasi & Kepanitiaan Section --- */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            border: 2px solid var(--light-pink);
+            transition: var(--transition);
+            display: flex;
+            gap: 20px;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-pink);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-pink);
+            background: var(--primary-yellow);
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+        }
+
+        .feature-text h3 {
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .feature-text p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            background-color: var(--light-pink);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            background: var(--white);
+            padding: 50px;
+            border-radius: 40px;
+            box-shadow: 0 15px 40px rgba(255, 71, 126, 0.05);
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-pink);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-info i {
+            font-size: 1.2rem;
+            color: var(--white);
+            background: var(--primary-pink);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .contact-form {
+            flex: 1.5;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #f3f4f6;
+            border-radius: 15px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary-pink);
+        }
+
+        .submit-btn {
+            background: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 700;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.2);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary-yellow);
+            color: var(--text-dark);
+            padding: 50px 10% 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-pink);
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.3rem; }
+            nav { padding: 1rem 5%; }
+            .nav-links { display: none; }
+            .about-img { position: relative; top: 0; }
+            .about-img img { width: 220px; height: 220px; }
+            section { padding: 70px 5%; }
+            .contact-container { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <nav>
+        <a href="#" class="logo">CAZ.</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#skills">Skill</a></li>
+            <li><a href="#organisasi">Pengalaman</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-content reveal">
+            <h1>Hai, Saya <span>Carissa Azelia Zahra</span></h1>
+            <p>Mahasiswa Teknik Pengolahan Limbah yang aktif, berdedikasi, dan siap berkontribusi dalam tim melalui solusi yang inovatif.</p>
+            <a href="#about" class="btn">Kenali Saya <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+        </div>
+    </section>
+
+    <!-- About & Riwayat Sekolah Section -->
+    <section id="about">
+        <div class="section-title reveal">
+            <h2>Tentang & Pendidikan</h2>
+        </div>
+        <div class="about-container">
+            <div class="about-img reveal">
+                <!-- Foto Profil Diperbarui -->
+                <img src="123456.jpeg" alt="Carissa Azelia Zahra">
+            </div>
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <p>Saya adalah mahasiswi di <strong>Politeknik Perkapalan Negeri Surabaya (PPNS)</strong> jurusan Teknik Pengolahan Limbah. Memiliki ketertarikan tinggi pada manajemen lingkungan dan pengembangan diri.</p>
+                </div>
+                
+                <h3 class="reveal" style="margin-top: 20px; color: var(--primary-pink);">Riwayat Pendidikan</h3>
+                <div class="education-list reveal">
+                    <div class="edu-item">
+                        <span>2023 - Sekarang</span>
+                        <h4>Teknik Pengolahan Limbah</h4>
+                        <p>Politeknik Perkapalan Negeri Surabaya</p>
+                    </div>
+                    <div class="edu-item">
+                        <span>2020 - 2023</span>
+                        <h4>SMA Negeri 1 Maospati</h4>
+                        <p>MIPA (Matematika dan Ilmu Pengetahuan Alam)</p>
+                    </div>
+                    <div class="edu-item">
+                        <span>2017 - 2020</span>
+                        <h4>SMP Negeri 1 Maospati</h4>
+                        <p>Pendidikan Menengah Pertama</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-title reveal">
+            <h2>Keahlian Saya</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-item reveal">
+                <div class="skill-info"><span>Manajemen Waktu</span><span>95%</span></div>
+                <div class="progress-bar"><div class="progress-fill" data-width="95%"></div></div>
+            </div>
+            <div class="skill-item reveal">
+                <div class="skill-info"><span>Microsoft Word</span><span>90%</span></div>
+                <div class="progress-bar"><div class="progress-fill" data-width="90%"></div></div>
+            </div>
+            <div class="skill-item reveal">
+                <div class="skill-info"><span>Microsoft Excel</span><span>85%</span></div>
+                <div class="progress-bar"><div class="progress-fill" data-width="85%"></div></div>
+            </div>
+            <div class="skill-item reveal">
+                <div class="skill-info"><span>AutoCAD</span><span>80%</span></div>
+                <div class="progress-bar"><div class="progress-fill" data-width="80%"></div></div>
+            </div>
+            <div class="skill-item reveal">
+                <div class="skill-info"><span>VS Code</span><span>75%</span></div>
+                <div class="progress-bar"><div class="progress-fill" data-width="75%"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organisasi Section -->
+    <section id="organisasi">
+        <div class="section-title reveal">
+            <h2>Organisasi</h2>
+        </div>
+        <div class="cards-container">
+            <!-- DPM -->
+            <div class="feature-card reveal">
+                <div class="feature-icon"><i class="fas fa-gavel"></i></div>
+                <div class="feature-text">
+                    <h3>Dewan Perwakilan Mahasiswa</h3>
+                    <p>Fokus pada legislasi, pengawasan, dan penyaluran aspirasi mahasiswa PPNS.</p>
+                </div>
+            </div>
+            <!-- Rohani Islam -->
+            <div class="feature-card reveal">
+                <div class="feature-icon"><i class="fas fa-mosque"></i></div>
+                <div class="feature-text">
+                    <h3>Rohani Islam (Rohis)</h3>
+                    <p>Aktif dalam kegiatan kerohanian dan pengembangan karakter religius di lingkungan kampus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kepanitiaan Section -->
+    <section id="kepanitiaan" style="padding-top: 0;">
+        <div class="section-title reveal">
+            <h2>Pengalaman Kepanitiaan</h2>
+        </div>
+        <div class="cards-container">
+            <div class="feature-card reveal">
+                <div class="feature-icon" style="background: var(--light-pink);"><i class="fas fa-tasks"></i></div>
+                <div class="feature-text">
+                    <h3>Staff Divisi Teknis</h3>
+                    <p>Mengelola alur teknis acara agar berjalan sesuai dengan timeline dan rencana operasional.</p>
+                </div>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon" style="background: var(--light-pink);"><i class="fas fa-clipboard-list"></i></div>
+                <div class="feature-text">
+                    <h3>Sekretaris Panitia</h3>
+                    <p>Bertanggung jawab atas administrasi, persuratan, dan dokumentasi rapat koordinasi panitia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title reveal">
+            <h2>Mari Berdiskusi</h2>
+        </div>
+        <div class="contact-container reveal">
+            <div class="contact-info">
+                <h3>Informasi Kontak</h3>
+                <div><i class="fas fa-envelope"></i><span>zahracarissa30@gmail.com</span></div>
+                <div><i class="fas fa-phone"></i><span>+62 822-3233-8710</span></div>
+                <div><i class="fas fa-map-marker-alt"></i><span>Magetan, Jawa Timur</span></div>
+            </div>
+            <div class="contact-form">
+                <form id="portfolioContactForm">
+                    <div class="form-group"><input type="text" placeholder="Nama Anda" required></div>
+                    <div class="form-group"><input type="email" placeholder="Alamat Email" required></div>
+                    <div class="form-group"><textarea rows="4" placeholder="Pesan Anda..." required></textarea></div>
+                    <button type="submit" class="submit-btn">Kirim Pesan</button>
+                </form>
+                <div id="formStatus" style="margin-top: 15px; display: none; color: var(--primary-pink); font-weight: 700;">
+                    Pesan berhasil dikirim!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>&copy; 2024 Carissa Azelia Zahra. Didesain dengan semangat.</p>
+    </footer>
+
+    <script>
+        // Reveal On Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                    
+                    let progressBars = reveals[i].querySelectorAll('.progress-fill');
+                    progressBars.forEach(bar => {
+                        bar.style.width = bar.getAttribute('data-width');
+                    });
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
+
+        // Form Handling
+        document.getElementById('portfolioContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const status = document.getElementById('formStatus');
+            status.style.display = 'block';
+            this.reset();
+            setTimeout(() => { status.style.display = 'none'; }, 4000);
+        });
+    </script>
+</body>
+</html>
